@@ -1,4 +1,7 @@
-.PHONY: all
+.PHONY: all download
+
+download:
+	wget https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img -O box.img
 
 all:
 	sudo virt-customize -a box.img --run adduser.sh
