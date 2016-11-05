@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 mkdir -p /etc/cloud/cloud.cfg.d/
-echo "datasource_list: [ None ]" | tee /etc/cloud/cloud.cfg.d/99_dpkg.cfg
+echo "datasource_list: [ None ]" | tee /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 dpkg-reconfigure -f noninteractive cloud-init
 useradd -m -d /home/vagrant -s /bin/bash vagrant
 su -c "mkdir -p /home/vagrant/.ssh/authorized_keys.d" vagrant
