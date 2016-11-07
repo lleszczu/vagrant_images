@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+# disable cloud-init
 mkdir -p /etc/cloud/cloud.cfg.d/
 echo "datasource_list: [ None ]" | tee /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 dpkg-reconfigure -f noninteractive cloud-init
