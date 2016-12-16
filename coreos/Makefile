@@ -1,8 +1,14 @@
-.PHONY: all download
+.PHONY: all cloudconfig privatekey
 
-download:
-	wget https://stable.release.core-os.net/amd64-usr/1010.5.0/coreos_production_qemu_image.img.bz2 -O - \
-	   | bzip2 -d >	box.img
+privatekey:
+	wget https://github.com/mitchellh/vagrant/blob/master/keys/vagrant
+cloudconfig:
+	set -e ;\
+	DIR=$$( mktemp -d) ;\
+	mkdir -p $${DIR}/openstack/latest ;\
+	cp user_data $${DIR}/openstack/latest/user_data ;\
+	mkisofs -R -V config-2 -o configdrive.iso $${DIR} ;\
+	#rm -r $${DIR} ;\
 
 all:
 	sudo virt-customize -a box.img --run adduser.sh

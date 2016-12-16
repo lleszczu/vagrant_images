@@ -1,0 +1,26 @@
+{
+    "builders": [
+        {
+            "type": "qemu",
+            "iso_url": "https://stable.release.core-os.net/amd64-usr/1010.5.0/coreos_production_iso_image.iso",
+            "iso_checksum": "0d7a0fddc9aa332cbe5da455189c6746",
+            "iso_checksum_type": "MD5",
+            "disk_size": 16384,
+            "shutdown_command": "sudo shutdown -h now",
+            "format": "qcow2",
+            "accelerator": "kvm",
+            "ssh_username": "core",
+            "ssh_password": "core",
+            "vm_name": "coreos",
+            "http_directory": ".",
+            "qemuargs": [
+                ["-m", "1024"],
+                ["-hdb", "configdrive.iso"]
+            ],
+            "boot_wait": "30s",
+            "boot_command": [
+            ]
+        }
+    ]
+
+}
