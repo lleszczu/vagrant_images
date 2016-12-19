@@ -8,6 +8,7 @@
             "shutdown_command": "sudo shutdown -h now",
             "disk_size": 16384,
             "format": "qcow2",
+            "headless": true,
             "accelerator": "kvm",
             "ssh_username": "core",
             "ssh_password": "core",
@@ -20,6 +21,11 @@
             "boot_wait": "20s"
         }],
     "provisioners": [
+        {
+            "type": "file",
+            "source": "cloud-config.yml",
+            "destination": "/tmp/cloud-config.yml"
+        },
         {
             "type": "shell",
             "script": "install.sh"

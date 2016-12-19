@@ -23,3 +23,6 @@ cloudconfig:
 
 build:
 	packer build coreos.json
+	mv output-qemu/coreos box.img
+	tar cvzf coreos_stable.box ./metadata.json ./Vagrantfile ./box.img
+	vagrant box add  ./coreos_stable.box  --name lukl/coreos
